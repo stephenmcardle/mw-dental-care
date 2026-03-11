@@ -3,7 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-import { Menu, Cross } from 'lucide-react'
+import { Menu } from 'lucide-react'
+import logo from '@/assets/mw-logo-transparent.png'
 
 const links = [
   { label: 'Home', to: '/' },
@@ -19,9 +20,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-          <Cross className="h-5 w-5 text-primary" aria-hidden="true" />
-          MW Dental Care
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="MW Dental Care" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop nav */}
