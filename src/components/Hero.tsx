@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
@@ -28,12 +29,12 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="#contact" className={cn(buttonVariants({ size: 'lg' }))}>
+          <Link to="/contact" className={cn(buttonVariants({ size: 'lg' }))}>
             Book an Appointment
-          </a>
-          <a href="#services" className={cn(buttonVariants({ size: 'lg', variant: 'outline' }))}>
+          </Link>
+          <Link to="/services" className={cn(buttonVariants({ size: 'lg', variant: 'outline' }))}>
             Our Services
-          </a>
+          </Link>
         </div>
 
         <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-muted-foreground">
