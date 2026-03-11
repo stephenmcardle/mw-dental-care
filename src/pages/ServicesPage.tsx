@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { categories, getServicesForCategory } from '@/data/services'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function ServicesPage() {
+  usePageTitle('Our Services')
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">

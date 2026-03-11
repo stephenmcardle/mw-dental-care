@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { Section } from '@/components/layout/Section'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 import { aboutData } from '@/data/about'
+import { usePageTitle } from '@/hooks/usePageTitle'
 import {
   Heart,
   UserCheck,
@@ -21,6 +22,7 @@ const philosophyIcons = [Heart, UserCheck, BookOpen]
 const technologyIcons = [Scan, ScanLine, Camera]
 
 export default function AboutPage() {
+  usePageTitle('About Us')
   return (
     <div>
       {/* ── 1. INTRO / HERO ────────────────────────────────────── */}

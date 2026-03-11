@@ -11,6 +11,7 @@ import {
   type ServiceCategory,
   type ServiceDetail,
 } from '@/data/services'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 // ─── Breadcrumb ───────────────────────────────────────────────────────────────
 
@@ -51,6 +52,7 @@ function Breadcrumb({ crumbs }: { crumbs: { label: string; to?: string }[] }) {
 // ─── Category view ────────────────────────────────────────────────────────────
 
 function CategoryView({ category }: { category: ServiceCategory }) {
+  usePageTitle(category.title)
   const Icon = category.icon
   const treatments = getServicesForCategory(category.slug)
 
@@ -104,6 +106,7 @@ function CategoryView({ category }: { category: ServiceCategory }) {
 // ─── Service detail view ──────────────────────────────────────────────────────
 
 function ServiceView({ service }: { service: ServiceDetail }) {
+  usePageTitle(service.title)
   const category = getCategoryBySlug(service.categorySlug)
   const related = service.relatedServiceSlugs
     ? getRelatedServices(service.relatedServiceSlugs)
@@ -227,6 +230,7 @@ function ServiceView({ service }: { service: ServiceDetail }) {
 // ─── Not found ────────────────────────────────────────────────────────────────
 
 function NotFound() {
+  usePageTitle('Service Not Found')
   return (
     <div className="container mx-auto px-4 py-24 text-center">
       <h1 className="text-3xl font-bold mb-3">Page not found</h1>
