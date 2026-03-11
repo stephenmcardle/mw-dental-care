@@ -1,9 +1,17 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-import { Menu } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import logo from '@/assets/mw-logo-transparent.png'
 
 const links = [
@@ -24,7 +32,7 @@ export default function Navbar() {
           <img src={logo} alt="MW Dental Care" className="h-9 w-auto" />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — unchanged */}
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <NavLink
@@ -56,32 +64,85 @@ export default function Navbar() {
           >
             <Menu className="h-5 w-5" aria-hidden="true" />
           </SheetTrigger>
-          <SheetContent side="right" className="w-64">
-            <nav aria-label="Mobile navigation" className="mt-8 flex flex-col gap-4">
-              {links.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  end={link.to === '/'}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    cn(
-                      'text-base font-medium transition-colors',
-                      isActive ? 'text-foreground' : 'hover:text-primary',
-                    )
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+
+          <SheetContent
+            side="right"
+            className="w-72 gap-0 p-0"
+            showCloseButton={false}
+          >
+            {/* ── Panel header ───────────────────────────────── */}
+            <div className="flex items-center justify-between border-b px-5 py-4">
+              <div>
+                <SheetTitle className="text-sm font-semibold">
+                  MW Dental Care
+                </SheetTitle>
+                <SheetDescription className="text-xs mt-0.5">
+                  Family &amp; Cosmetic Dentistry
+                </SheetDescription>
+              </div>
+              <SheetClose
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon-sm"
+                    aria-label="Close menu"
+                    className="-mr-1 shrink-0"
+                  />
+                }
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
+              </SheetClose>
+            </div>
+
+            {/* ── Nav links ──────────────────────────────────── */}
+            <nav
+              aria-label="Mobile navigation"
+              className="flex-1 overflow-y-auto px-4 py-4"
+            >
+              <ul role="list" className="space-y-1">
+                {links.map((link) => (
+                  <li key={link.to}>
+                    <NavLink
+                      to={link.to}
+                      end={link.to === '/'}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        cn(
+                          'flex items-center rounded-lg px-3 py-3 text-base font-medium transition-colors',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                          isActive
+                            ? 'bg-primary/10 text-foreground'
+                            : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+                        )
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* ── CTA / action area ──────────────────────────── */}
+            <SheetFooter className="border-t px-5 py-5 gap-3">
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className={cn(buttonVariants(), 'mt-4')}
+                className={cn(buttonVariants({ size: 'lg' }), 'w-full')}
               >
                 Book Appointment
               </Link>
-            </nav>
+              <a
+                href="tel:+15555550100"
+                className={cn(
+                  'block text-center text-sm text-muted-foreground',
+                  'hover:text-foreground transition-colors',
+                  'rounded-md py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                )}
+              >
+                (555) 555-0100
+              </a>
+            </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
