@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers / Pages static assets config
+  // Docs: https://developers.cloudflare.com/workers/static-assets/
+  "name": "mw-dental-care",
+  "compatibility_date": "2025-03-11",
+  "assets": {
+    "directory": "./dist",
+    // Serve index.html for any path that doesn't match a static file,
+    // enabling React Router's BrowserRouter to handle client-side routing.
+    "not_found_handling": "single-page-application"
+  }
+}
