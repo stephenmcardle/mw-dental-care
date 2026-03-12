@@ -12,7 +12,7 @@ type ContactProps = {
 }
 
 const iconContainer =
-  'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10'
+  'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/15'
 
 const cardBase = 'rounded-xl border bg-card shadow-sm'
 
@@ -59,7 +59,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
         className={clickableCard}
       >
         <div className={iconContainer}>
-          <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
+          <Phone className="h-5 w-5 text-foreground" aria-hidden="true" />
         </div>
         <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Phone
@@ -77,7 +77,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
         className={clickableCard}
       >
         <div className={iconContainer}>
-          <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
+          <MapPin className="h-5 w-5 text-foreground" aria-hidden="true" />
         </div>
         <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Address
@@ -93,7 +93,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
         className={clickableCard}
       >
         <div className={iconContainer}>
-          <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
+          <Mail className="h-5 w-5 text-foreground" aria-hidden="true" />
         </div>
         <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Email
@@ -105,7 +105,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
       {/* Working Hours — static, non-clickable */}
       <div className={staticCard}>
         <div className={iconContainer}>
-          <Clock className="h-5 w-5 text-primary" aria-hidden="true" />
+          <Clock className="h-5 w-5 text-foreground" aria-hidden="true" />
         </div>
         <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Working Hours
@@ -155,30 +155,30 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
           {sectionIntro}
 
           {/* Stage wrapper — unifies cards, CTA, and map */}
-          <div className="max-w-3xl mx-auto rounded-3xl border bg-background shadow-sm p-8 sm:p-10 flex flex-col gap-8">
+          <div className="max-w-3xl mx-auto rounded-3xl border bg-card shadow-sm p-8 sm:p-10 flex flex-col gap-8">
             {cards}
 
             {/* CTA block */}
-            <div className="rounded-2xl bg-primary text-primary-foreground text-center py-10 px-6">
+            <div className="rounded-2xl bg-brand-dark text-brand-dark-fg text-center py-10 px-6">
               <h2 className="text-2xl font-bold">{ctaHeading}</h2>
-              <p className="mt-3 text-primary-foreground/80 leading-relaxed">
+              <p className="mt-3 text-brand-dark-fg/80 leading-relaxed">
                 Call us at{' '}
                 <a
                   href={phoneHref}
-                  className="font-semibold text-primary-foreground underline underline-offset-2 hover:text-primary-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:rounded-sm"
+                  className="font-semibold text-brand-dark-fg underline underline-offset-2 hover:text-brand-dark-fg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
                 >
                   {phoneDisplay}
                 </a>{' '}
                 or email us and we&apos;ll confirm your appointment as soon as
                 possible.
               </p>
-              <p className="mt-1.5 text-sm text-primary-foreground/60">
+              <p className="mt-1.5 text-sm text-brand-dark-fg/60">
                 Most appointment requests are confirmed within one working day.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
                   href={phoneHref}
-                  className="inline-block rounded-md bg-background text-foreground font-semibold px-6 py-3 hover:bg-background/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                  className="inline-block rounded-md bg-background text-foreground font-semibold px-6 py-3 hover:bg-background/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                 >
                   {ctaPrimaryLabel}
                 </a>
@@ -186,7 +186,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
                   href={mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-primary-foreground/80 underline underline-offset-2 hover:text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:rounded-sm"
+                  className="text-sm font-medium text-brand-dark-fg/80 underline underline-offset-2 hover:text-brand-dark-fg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
                 >
                   Get directions &rarr;
                 </a>
@@ -249,7 +249,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
       {cards}
 
       {/* Compact CTA strip */}
-      <div className="mt-8 rounded-xl border bg-background px-6 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-8 rounded-xl border bg-card px-6 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
           Ready to book or have a question?
         </p>
@@ -264,7 +264,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
             href={mapsHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+            className="text-sm font-medium underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
           >
             Get Directions
           </a>

@@ -6,38 +6,54 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
+    /* ── Brand palette ───────────────────────────────────────────────────────
+     * Background:    #f1f4e9  sage
+     * Primary:       #8fd8c1  mint  (buttons / icon containers only — too light for text)
+     * Accent 1:      #f2c4b4  peach
+     * Accent 2:      #fed4c6  soft peach (gradients / hero)
+     * Dark surface:  #292929  (CTA sections, dark bands)
+     * Dark text:     #21242a
+     * Light text:    #f1f4e9  (on dark surfaces only)
+     *
+     * WCAG 2.1 AA notes:
+     * - Mint (#8fd8c1) is NOT used as text on any light surface — contrast ~1.5:1 on sage
+     * - Dark text on mint: ~9.4:1 ✓
+     * - Dark text on sage bg: ~18:1 ✓
+     * - Muted-foreground on sage bg: ~5.3:1 ✓
+     * - Light text on dark surface: ~13.4:1 ✓
+     * ─────────────────────────────────────────────────────────────────────── */
+    --background: oklch(0.957 0.022 122);   /* #f1f4e9 sage */
+    --foreground: oklch(0.187 0.014 263);   /* #21242a dark navy */
+    --card: oklch(0.975 0.010 122);         /* #f7f9f2 warm light surface — elevated above sage bg, not stark white */
+    --card-foreground: oklch(0.187 0.014 263);
     --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.187 0.014 263);
+    --primary: oklch(0.821 0.080 171);      /* #8fd8c1 mint */
+    --primary-foreground: oklch(0.187 0.014 263); /* dark text on mint */
+    --secondary: oklch(0.935 0.016 122);    /* deeper sage for secondary/hover */
+    --secondary-foreground: oklch(0.187 0.014 263);
+    --muted: oklch(0.935 0.016 122);        /* same as secondary */
+    --muted-foreground: oklch(0.44 0.010 122); /* ~5.3:1 on sage bg — AA ✓ */
+    --accent: oklch(0.935 0.016 122);       /* same as muted — used for hover states */
+    --accent-foreground: oklch(0.187 0.014 263);
     --destructive: oklch(0.58 0.22 27);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --border: oklch(0.880 0.018 122);       /* sage-tinted border */
+    --input: oklch(0.880 0.018 122);
+    --ring: oklch(0.187 0.014 263);         /* dark navy — max contrast on light surfaces */
     --chart-1: oklch(0.809 0.105 251.813);
     --chart-2: oklch(0.623 0.214 259.815);
     --chart-3: oklch(0.546 0.245 262.881);
     --chart-4: oklch(0.488 0.243 264.376);
     --chart-5: oklch(0.424 0.199 265.638);
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar: oklch(0.935 0.016 122);
+    --sidebar-foreground: oklch(0.187 0.014 263);
+    --sidebar-primary: oklch(0.821 0.080 171);
+    --sidebar-primary-foreground: oklch(0.187 0.014 263);
+    --sidebar-accent: oklch(0.935 0.016 122);
+    --sidebar-accent-foreground: oklch(0.187 0.014 263);
+    --sidebar-border: oklch(0.880 0.018 122);
+    --sidebar-ring: oklch(0.187 0.014 263);
 }
 
 .dark {
@@ -76,6 +92,12 @@
 
 @theme inline {
     --font-sans: 'Geist Variable', sans-serif;
+    /* ── Brand-specific tokens ────────────────────────────────────────────── */
+    --color-brand-dark: oklch(0.224 0.000 0);          /* #292929 dark CTA surface */
+    --color-brand-dark-fg: oklch(0.957 0.022 122);     /* #f1f4e9 text on dark surface */
+    --color-brand-peach: oklch(0.860 0.063 32);        /* #f2c4b4 accent 1 */
+    --color-brand-peach-soft: oklch(0.893 0.055 32);   /* #fed4c6 accent 2 / gradients */
+    /* ── Shadcn token mappings ───────────────────────────────────────────── */
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

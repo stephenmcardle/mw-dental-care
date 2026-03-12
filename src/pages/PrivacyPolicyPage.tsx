@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
                   href="https://policies.google.com/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                  className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   https://policies.google.com/privacy
                 </a>
@@ -251,7 +251,7 @@ export default function PrivacyPolicyPage() {
                 Phone:{' '}
                 <a
                   href={contactData.phoneHref}
-                  className="text-foreground underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                  className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   {contactData.phoneDisplay}
                 </a>
@@ -260,7 +260,7 @@ export default function PrivacyPolicyPage() {
                 Email:{' '}
                 <a
                   href={contactData.emailHref}
-                  className="text-foreground underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                  className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   {contactData.emailDisplay}
                 </a>

@@ -46,7 +46,7 @@ export default function Services() {
                     {category.shortDescription}
                   </p>
                   <span
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-foreground"
                     aria-hidden="true"
                   >
                     Learn more

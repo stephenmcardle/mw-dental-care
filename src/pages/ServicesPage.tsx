@@ -62,7 +62,7 @@ export default function ServicesPage() {
                   )}
 
                   <span
-                    className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary"
+                    className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-foreground"
                     aria-hidden="true"
                   >
                     View treatments

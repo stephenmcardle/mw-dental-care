@@ -192,7 +192,7 @@ export default function TermsOfUsePage() {
                 Phone:{' '}
                 <a
                   href={contactData.phoneHref}
-                  className="text-foreground underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                  className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   {contactData.phoneDisplay}
                 </a>
@@ -201,7 +201,7 @@ export default function TermsOfUsePage() {
                 Email:{' '}
                 <a
                   href={contactData.emailHref}
-                  className="text-foreground underline underline-offset-2 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                  className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   {contactData.emailDisplay}
                 </a>

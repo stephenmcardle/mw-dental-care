@@ -12,7 +12,7 @@ const highlights = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-sky-50 to-background py-24 md:py-36">
+    <section className="relative overflow-hidden bg-linear-to-b from-brand-peach-soft to-background py-24 md:py-36">
       <div className="container mx-auto px-4 text-center">
         <Badge variant="secondary" className="mb-4">
           Trusted Dental Care Since 2005
@@ -20,7 +20,7 @@ export default function Hero() {
 
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
           Healthy Smiles for the{' '}
-          <span className="text-primary">Whole Family</span>
+          Whole Family
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
@@ -40,7 +40,7 @@ export default function Hero() {
         <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-muted-foreground">
           {highlights.map((h) => (
             <li key={h} className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-foreground" aria-hidden="true" />
               {h}
             </li>
           ))}

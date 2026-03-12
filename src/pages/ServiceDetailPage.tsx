@@ -159,7 +159,7 @@ function ServiceView({ service }: { service: ServiceDetail }) {
             {service.steps.map((step, i) => (
               <li key={step} className="flex items-start gap-3">
                 <span
-                  className="shrink-0 h-6 w-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5"
+                  className="shrink-0 h-6 w-6 rounded-full bg-primary/15 text-foreground text-xs font-bold flex items-center justify-center mt-0.5"
                   aria-hidden="true"
                 >
                   {i + 1}

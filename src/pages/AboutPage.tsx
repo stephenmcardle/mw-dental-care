@@ -51,7 +51,7 @@ export default function AboutPage() {
             {aboutData.stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border bg-background px-6 py-8 text-center shadow-sm"
+                className="rounded-2xl border bg-card px-6 py-8 text-center shadow-sm"
               >
                 <p className="text-4xl font-bold tracking-tight">{stat.value}</p>
                 <p className="mt-2 text-sm text-muted-foreground leading-snug">{stat.label}</p>
@@ -66,16 +66,16 @@ export default function AboutPage() {
         <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
           {/* Left: portrait placeholder */}
           <div
-            className="rounded-2xl bg-linear-to-br from-sky-50 to-sky-100 border border-sky-200 aspect-4/5 flex flex-col items-center justify-center gap-4"
+            className="rounded-2xl bg-linear-to-br from-brand-peach-soft to-brand-peach border border-brand-peach/40 aspect-4/5 flex flex-col items-center justify-center gap-4"
             role="img"
             aria-label="Portrait photo of Dr. Margaret Williams — coming soon"
           >
             <div className="h-24 w-24 rounded-full bg-white shadow-sm flex items-center justify-center">
-              <span className="text-2xl font-semibold text-sky-600" aria-hidden="true">
+              <span className="text-2xl font-semibold text-foreground" aria-hidden="true">
                 MW
               </span>
             </div>
-            <span className="text-sm text-sky-700/60 font-medium">
+            <span className="text-sm text-muted-foreground font-medium">
               Dr. Margaret Williams
             </span>
           </div>
@@ -91,7 +91,7 @@ export default function AboutPage() {
             >
               {aboutData.dentist.name}
             </h2>
-            <p className="mt-1 text-primary font-medium">{aboutData.dentist.title}</p>
+            <p className="mt-1 font-medium text-muted-foreground">{aboutData.dentist.title}</p>
             <Separator className="my-5" />
             <p className="text-muted-foreground leading-relaxed">{aboutData.dentist.bio}</p>
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 {aboutData.dentist.credentials.map((credential) => (
                   <li
                     key={credential}
-                    className="inline-flex items-center rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 ring-1 ring-inset ring-sky-700/20"
+                    className="inline-flex items-center rounded-full bg-brand-peach/30 px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/15"
                   >
                     {credential}
                   </li>
@@ -134,10 +134,10 @@ export default function AboutPage() {
                 <Card className="h-full">
                   <CardContent className="p-7">
                     <div
-                      className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sky-50"
+                      className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10"
                       aria-hidden="true"
                     >
-                      <Icon className="h-5 w-5 text-sky-600" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-foreground" aria-hidden="true" />
                     </div>
                     <h3 className="text-base font-semibold">{card.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
@@ -164,7 +164,7 @@ export default function AboutPage() {
               className="text-3xl font-bold tracking-tight sm:text-4xl"
             >
               Modern Technology,{' '}
-              <span className="text-primary">Comfortable Care</span>
+              Comfortable Care
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               {aboutData.technologyIntro}
@@ -177,12 +177,12 @@ export default function AboutPage() {
               const Icon = technologyIcons[i]
               return (
                 <li key={card.title}>
-                  <div className="flex items-start gap-4 rounded-2xl border bg-background p-5 shadow-sm">
+                  <div className="flex items-start gap-4 rounded-2xl border bg-card p-5 shadow-sm">
                     <div
-                      className="shrink-0 rounded-lg bg-sky-50 p-2.5"
+                      className="shrink-0 rounded-lg bg-primary/10 p-2.5"
                       aria-hidden="true"
                     >
-                      <Icon className="h-5 w-5 text-sky-600" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-foreground" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold">{card.title}</h3>
@@ -220,20 +220,20 @@ export default function AboutPage() {
           </div>
 
           {/* Right: callout card */}
-          <Card className="border-sky-200 bg-sky-50/60">
+          <Card className="border-brand-peach/40 bg-brand-peach/20">
             <CardContent className="p-8">
-              <p className="text-lg font-semibold text-sky-900">
+              <p className="text-lg font-semibold text-foreground">
                 Serving local families since 2005
               </p>
-              <Separator className="my-5 bg-sky-200" />
+              <Separator className="my-5" />
               <ul role="list" className="space-y-3">
                 {aboutData.communityHighlights.map((highlight) => (
                   <li key={highlight} className="flex items-start gap-3">
                     <CheckCircle
-                      className="mt-0.5 h-4 w-4 shrink-0 text-sky-600"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-foreground"
                       aria-hidden="true"
                     />
-                    <span className="text-sm text-sky-900/80">{highlight}</span>
+                    <span className="text-sm text-foreground/80">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -287,7 +287,7 @@ export default function AboutPage() {
 
       {/* ── 7. CTA ────────────────────────────────────────────── */}
       <Section variant="dark" labelledBy="cta-heading" containerClassName="text-center">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary-foreground/60 mb-4">
+        <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-fg/60 mb-4">
           Get Started Today
         </p>
         <h2
@@ -296,7 +296,7 @@ export default function AboutPage() {
         >
           Ready to Experience Comfortable Dentistry?
         </h2>
-        <p className="mt-4 text-lg text-primary-foreground/75 max-w-xl mx-auto">
+        <p className="mt-4 text-lg text-brand-dark-fg/75 max-w-xl mx-auto">
           Schedule your visit with MW Dental Care today. New patients welcome — same-day
           emergency appointments available.
         </p>
@@ -311,7 +311,7 @@ export default function AboutPage() {
             to="/services"
             className={cn(
               buttonVariants({ size: 'lg' }),
-              'bg-transparent border border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10',
+              'bg-transparent border border-brand-dark-fg/40 text-brand-dark-fg hover:bg-brand-dark-fg/10',
             )}
           >
             View Our Services

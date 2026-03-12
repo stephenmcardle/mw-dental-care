@@ -20,10 +20,12 @@ export type SectionProps = {
 const variantClasses: Record<SectionVariant, string> = {
   default: 'bg-background',
   muted: 'bg-muted/40',
-  /** Gradient used for hero/intro sections */
-  accent: 'bg-linear-to-b from-sky-50 to-background',
-  /** Primary-coloured band — ensure children use primary-foreground text */
-  dark: 'bg-primary text-primary-foreground',
+  /** Soft peach-to-sage gradient for hero / intro sections */
+  accent: 'bg-linear-to-b from-brand-peach-soft to-background',
+  /** Dark band (#292929) — children inherit brand-dark-fg (sage) text.
+   *  Ring is locally overridden to brand-dark-fg so focus indicators stay
+   *  visible on the dark surface. */
+  dark: 'bg-brand-dark text-brand-dark-fg [--ring:var(--color-brand-dark-fg)]',
 }
 
 const sizeClasses: Record<SectionSize, string> = {
