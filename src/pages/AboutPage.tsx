@@ -68,7 +68,7 @@ export default function AboutPage() {
           <div
             className="rounded-2xl bg-linear-to-br from-brand-peach-soft to-brand-peach border border-brand-peach/40 aspect-4/5 flex flex-col items-center justify-center gap-4"
             role="img"
-            aria-label="Portrait photo of Dr. Margaret Williams — coming soon"
+            aria-label="Portrait photo of Dr. Monica Wisniewski — coming soon"
           >
             <div className="h-24 w-24 rounded-full bg-white shadow-sm flex items-center justify-center">
               <span className="text-2xl font-semibold text-foreground" aria-hidden="true">
@@ -76,7 +76,7 @@ export default function AboutPage() {
               </span>
             </div>
             <span className="text-sm text-muted-foreground font-medium">
-              Dr. Margaret Williams
+              Dr. Monica Wisniewski
             </span>
           </div>
 

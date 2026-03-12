@@ -50,7 +50,7 @@ export const aboutData: AboutData = {
   introTitle: 'A Practice Built on Trust & Excellence',
 
   introText: [
-    'Founded in 2005 by Dr. Margaret Williams, MW Dental Care has been the go-to dental home for families across the region. Our team of board-certified dentists and hygienists is dedicated to providing gentle, high-quality care in a welcoming environment.',
+    'Founded in 2005 by Dr. Monica Wisniewski, MW Dental Care has been the go-to dental home for families across the region. Our team of board-certified dentists and hygienists is dedicated to providing gentle, high-quality care in a welcoming environment.',
     'We invest in the latest dental technology — from digital X-rays to 3D imaging — so that every diagnosis is precise and every treatment is as comfortable as possible. Your health and confidence are our top priorities.',
   ],
 
@@ -62,9 +62,9 @@ export const aboutData: AboutData = {
   ],
 
   dentist: {
-    name: 'Dr. Margaret Williams',
+    name: 'Dr. Monica Wisniewski',
     title: 'Founder & Lead Dentist',
-    bio: "Dr. Williams founded MW Dental Care with the goal of creating a dental practice where patients feel heard, comfortable, and confident in their care. With decades of experience in family, cosmetic, and restorative dentistry, she focuses on personalised treatment plans designed around each patient's needs and long-term oral health.",
+    bio: "Dr. Wisniewski founded MW Dental Care with the goal of creating a dental practice where patients feel heard, comfortable, and confident in their care. With decades of experience in family, cosmetic, and restorative dentistry, she focuses on personalised treatment plans designed around each patient's needs and long-term oral health.",
     credentials: [
       'Board-Certified General Dentist',
       'Fellow, Academy of General Dentistry',
@@ -137,7 +137,7 @@ export const aboutData: AboutData = {
     },
     {
       quote:
-        'Dr. Williams explained every step of my treatment clearly and never rushed. My kids love coming here too.',
+        'Dr. Wisniewski explained every step of my treatment clearly and never rushed. My kids love coming here too.',
       author: 'James L.',
       role: 'Family Dentistry Patient',
     },
