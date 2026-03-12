@@ -17,6 +17,8 @@ All main pages are built and functional. All known structural issues resolved. L
 - TermsOfUsePage (`/terms-of-use`): noindex, contactData address block
 - AccessibilityPage (`/accessibility`): noindex, WCAG 2.1 AA commitment statement
 - Sitemap: auto-generated to `dist/sitemap.xml` via `postbuild` npm hook
+- Brand palette applied across all pages — WCAG 2.1 AA compliant throughout
+- Card surfaces refined: `--card` shifted from pure white to warm sage-tinted surface (~#f7f9f2); `<Card>` component gains `shadow-sm`; floating panels converted from `bg-background` to `bg-card` for consistency
 
 ## Head management
 
@@ -31,10 +33,19 @@ Legal pages use `<Helmet><meta name="robots" content="noindex, follow" /></Helme
 - Production URL hardcoded: `const PRODUCTION_URL = 'https://mwdentalcare.net'`
 - Override at build time: `VITE_SITE_URL=https://staging.example.com npm run build`
 
+## Brand palette
+
+See `CLAUDE.md § Brand palette & colour rules` for the full token reference. Key rules:
+- **Never use `text-primary` (mint) on any light surface** — contrast fails (~1.5:1 on sage)
+- Use `bg-primary` (mint) for button backgrounds and `bg-primary/10–15` for icon containers, with `text-foreground` (dark navy) inside
+- Dark CTA sections / bands: `Section variant="dark"` or `bg-brand-dark text-brand-dark-fg`
+- Peach accents (`brand-peach`, `brand-peach-soft`): for gradients, portrait placeholders, credential chips — always use dark text on peach
+- Cards: use `bg-card` (not `bg-background`) for all elevated surfaces — `--card` is a warm sage-tinted light surface, not stark white
+
 ## Next Tasks
 
 - About page: replace all placeholder content (bio, credentials, testimonials, community, philosophy, tech cards) when client provides real copy
-- About page: replace initials portrait placeholder with real photo when available
+- About page: replace initials portrait placeholder with real photo when available (placeholder now uses peach gradient)
 - Consider adding a booking form to Contact page
 - Consider applying `Section` wrapper pattern to remaining homepage components for consistency
 

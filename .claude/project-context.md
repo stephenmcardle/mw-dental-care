@@ -2,7 +2,7 @@
 
 ## What this is
 
-A static marketing website for **MW Dental Care**, a dental practice. Founded in 2005 by Dr. Margaret Williams.
+A static marketing website for **MW Dental Care**, a dental practice. Founded in 2005 by Dr. Monica Wisniewski.
 
 **Deployment**: Cloudflare Pages (static, no server-side rendering, no backend).
 **Production URL**: `https://mwdentalcare.net` (no `www`)
@@ -30,7 +30,7 @@ A static marketing website for **MW Dental Care**, a dental practice. Founded in
 ## Brand
 
 - **Practice name**: MW Dental Care
-- **Lead dentist**: Dr. Margaret Williams
+- **Lead dentist**: Dr. Monica Wisniewski
 - **Founded**: 2005
 - **Tone**: calm, professional, modern, family-friendly, premium but understated
 - **Accent palette**: sky-50 / sky-100 / sky-600 (used for highlights, cards, chips)
@@ -49,7 +49,7 @@ The following content is **placeholder and must be replaced** before launch. Do 
 - `technologyCards` descriptions
 
 ### Dentist portrait
-- `src/pages/AboutPage.tsx` renders an initials placeholder block ("MW") with text "Dr. Margaret Williams"
+- `src/pages/AboutPage.tsx` renders an initials placeholder block ("MW") with text "Dr. Monica Wisniewski"
 - Replace with `<img>` when a real photo is available; the placeholder div has `role="img"` and `aria-label` already set
 
 ## Real contact data (in `src/data/contact.ts`)

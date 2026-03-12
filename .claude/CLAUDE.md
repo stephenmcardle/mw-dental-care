@@ -1,6 +1,6 @@
 # MW Dental Care — Claude Instructions
 
-Static marketing website for MW Dental Care (Dr. Margaret Williams, founded 2005). Deployed to Cloudflare Pages.
+Static marketing website for MW Dental Care (Dr. Monica Wisniewski, founded 2005). Deployed to Cloudflare Pages.
 
 ## Stack
 
@@ -91,7 +91,7 @@ Use `<Section>` from `@/components/layout/Section` for every full-width page ban
   <h2 id="heading-id">...</h2>
 </Section>
 ```
-Variants: `default` (white), `muted` (subtle tint), `accent` (sky gradient), `dark` (CTA).
+Variants: `default` (white card), `muted` (subtle sage tint), `accent` (peach-soft → sage gradient), `dark` (#292929 dark band, sage text).
 Sizes: `sm` (py-16), `default` (py-24), `lg` (py-28).
 
 Use `<SectionHeader>` for centred eyebrow + heading + description blocks:
@@ -148,6 +148,33 @@ Legal pages (`/privacy-policy`, `/terms-of-use`, `/accessibility`) all carry `no
 - Production URL hardcoded: `const PRODUCTION_URL = 'https://mwdentalcare.net'` — update here if the domain changes.
 - Override at build time: `VITE_SITE_URL=https://staging.example.com npm run build`
 - Note: Cloudflare Pages shows "Variables cannot be added to a Worker that only has static assets" — this is expected and normal for static-only deployments. `VITE_SITE_URL` is build-time only; it has no runtime effect.
+
+## Brand palette & colour rules
+
+All tokens defined in `src/index.css` (`:root` + `@theme inline`).
+
+| Token | Value | Usage |
+|---|---|---|
+| `--background` / `bg-background` | #f1f4e9 sage | Page background |
+| `--foreground` / `text-foreground` | #21242a dark navy | Body text, icons |
+| `--primary` / `bg-primary` | #8fd8c1 mint | Button backgrounds, `bg-primary/10–15` icon containers |
+| `--primary-foreground` / `text-primary-foreground` | #21242a | Text on mint buttons |
+| `--muted-foreground` / `text-muted-foreground` | ~#5e6459 dark sage-gray | Secondary text (5.3:1 on sage ✓) |
+| `bg-brand-dark` | #292929 | Dark CTA sections / bands |
+| `text-brand-dark-fg` | #f1f4e9 | Text on dark sections |
+| `bg-brand-peach` | #f2c4b4 | Accent cards, callout borders |
+| `bg-brand-peach-soft` | #fed4c6 | Hero/accent gradients, portrait placeholder |
+| `--card` / `bg-card` | #f7f9f2 warm light | Cards (elevated above sage bg — not stark white; has slight sage tint) |
+
+### Critical colour rules (WCAG 2.1 AA)
+
+- **Never use `text-primary` (mint) on any light surface.** Mint (#8fd8c1) gives ~1.5:1 contrast on sage — fails even for decorative text. Mint is for `bg-primary` (buttons) and `bg-primary/10–15` (icon container tints) only.
+- **Icons inside `bg-primary/10–15` containers must use `text-foreground`** (dark navy), not `text-primary`.
+- **Peach backgrounds:** always use `text-foreground` or `text-muted-foreground` on `bg-brand-peach` or `bg-brand-peach/xx`.
+- **Dark sections (`bg-brand-dark`):** always use `text-brand-dark-fg` (sage) for text. Opacity modifiers like `text-brand-dark-fg/80` work correctly (sage/80 on dark ≈ 10.9:1 ✓). Focus rings auto-adapt via the CSS variable override in Section `dark` variant.
+- **`Section variant="dark"`** sets `bg-brand-dark text-brand-dark-fg [--ring:var(--color-brand-dark-fg)]` — the ring override cascades sage focus rings to all interactive elements inside without per-component changes.
+- Do **not** use `text-primary-foreground` in dark sections — it now resolves to dark navy (invisible on dark bg).
+- `hover:text-primary` links on light backgrounds fail contrast. Use `hover:text-foreground` or `hover:text-foreground/80`.
 
 ## Known Issues (as of 2026-03-12)
 
