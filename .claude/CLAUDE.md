@@ -8,7 +8,9 @@ Static marketing website for MW Dental Care (Dr. Margaret Williams, founded 2005
 - **Tailwind CSS v4** — uses `@tailwindcss/vite` plugin, `@import "tailwindcss"` in CSS entry. **No `tailwind.config.ts`** — do not create one.
 - **Shadcn UI v4** built on **`@base-ui/react`** — NOT Radix UI. See UI Constraints below.
 - **react-router-dom v7** with `BrowserRouter` and clean URLs
+- **react-helmet-async** — `<HelmetProvider>` wraps `<App>` in `src/main.tsx`; use `<Helmet>` in page components for per-route `<head>` tags
 - **Cloudflare Pages** SPA fallback: `wrangler.jsonc` sets `not_found_handling: "single-page-application"`
+- **Production URL**: `https://mwdentalcare.net` (no `www`)
 - Path alias: `@/` → `./src/`
 
 ## Build Commands
@@ -38,6 +40,8 @@ src/
     usePageTitle.ts     # Sets document.title — call in every page component
   pages/                # One component per route
   components/           # Feature components (Hero, Navbar, Footer, etc.)
+scripts/
+  generate-sitemap.js   # ESM Node.js script — writes dist/sitemap.xml post-build
 ```
 
 ## Coding Standards
@@ -101,6 +105,18 @@ Call `usePageTitle` from `@/hooks/usePageTitle` in every page component:
 - No argument → home page default title
 - With argument → `{title} | MW Dental Care`
 
+### Head management (noindex, canonical, etc.)
+Use `<Helmet>` from `react-helmet-async` for per-route `<head>` tags:
+```tsx
+import { Helmet } from 'react-helmet-async'
+
+<Helmet>
+  <meta name="robots" content="noindex, follow" />
+</Helmet>
+```
+`<HelmetProvider>` is already in `src/main.tsx` — do not add it again.
+Legal pages (`/privacy-policy`, `/terms-of-use`, `/accessibility`) all carry `noindex, follow`.
+
 ### Icons
 - `aria-hidden="true"` on all decorative icons
 - Store icon references (not JSX) in data files: `icon: LucideIcon`
@@ -125,8 +141,14 @@ Call `usePageTitle` from `@/hooks/usePageTitle` in every page component:
 5. Keep dependencies minimal — check existing libraries before adding new ones
 6. Run `npm run build` after every change to verify TypeScript and Vite both pass
 
+## Sitemap
+
+`scripts/generate-sitemap.js` runs automatically after every build via the `"postbuild"` npm hook.
+- 26 routes indexed; `/privacy-policy`, `/terms-of-use`, `/accessibility` are excluded (noindex pages).
+- Production URL hardcoded: `const PRODUCTION_URL = 'https://mwdentalcare.net'` — update here if the domain changes.
+- Override at build time: `VITE_SITE_URL=https://staging.example.com npm run build`
+- Note: Cloudflare Pages shows "Variables cannot be added to a Worker that only has static assets" — this is expected and normal for static-only deployments. `VITE_SITE_URL` is build-time only; it has no runtime effect.
+
 ## Known Issues (as of 2026-03-12)
 
-- **Footer** (`src/components/Footer.tsx`): nav links use `<a href="#...">` (broken) and brand mark uses `Cross` icon instead of logo image
-- **Navbar mobile** (`src/components/Navbar.tsx`): phone hardcoded as `(555) 555-0100` — should use `contactData.phoneDisplay` / `contactData.phoneHref` from `src/data/contact.ts`
 - About page content in `src/data/about.ts` is mostly placeholder — do not treat as final

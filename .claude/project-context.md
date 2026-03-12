@@ -5,6 +5,7 @@
 A static marketing website for **MW Dental Care**, a dental practice. Founded in 2005 by Dr. Margaret Williams.
 
 **Deployment**: Cloudflare Pages (static, no server-side rendering, no backend).
+**Production URL**: `https://mwdentalcare.net` (no `www`)
 
 ## Goals
 
@@ -17,11 +18,14 @@ A static marketing website for **MW Dental Care**, a dental practice. Founded in
 
 | Route | Status | Notes |
 |---|---|---|
-| `/` | Complete | Hero, Services preview, About preview, Contact info |
+| `/` | Complete | Hero, Services preview, About preview, Contact info preview |
 | `/services` | Complete | Category card grid |
 | `/services/:slug` | Complete | Category view + individual service view |
 | `/about` | Complete | Fully designed with Section wrapper pattern |
 | `/contact` | Complete | Contact cards, CTA, Google Maps embed, mobile sticky call bar — no booking form yet |
+| `/privacy-policy` | Complete | noindex, contactData address block |
+| `/terms-of-use` | Complete | noindex, contactData address block |
+| `/accessibility` | Complete | noindex, WCAG 2.1 AA commitment statement |
 
 ## Brand
 
@@ -31,11 +35,6 @@ A static marketing website for **MW Dental Care**, a dental practice. Founded in
 - **Tone**: calm, professional, modern, family-friendly, premium but understated
 - **Accent palette**: sky-50 / sky-100 / sky-600 (used for highlights, cards, chips)
 - **Primary colour**: defined in CSS variables via Shadcn theme
-
-## Components known to need attention
-
-- **Footer** (`src/components/Footer.tsx`): nav links still use `<a href="#...">` anchor targets instead of React Router `<Link to>`. Also uses the `Cross` lucide icon as branding instead of the logo image. Needs updating to match Navbar.
-- **Navbar mobile phone** (`src/components/Navbar.tsx`): mobile sheet footer still shows `(555) 555-0100` — should reference `contactData.phoneDisplay` and `contactData.phoneHref` from `src/data/contact.ts`.
 
 ## Placeholder content
 
@@ -52,12 +51,6 @@ The following content is **placeholder and must be replaced** before launch. Do 
 ### Dentist portrait
 - `src/pages/AboutPage.tsx` renders an initials placeholder block ("MW") with text "Dr. Margaret Williams"
 - Replace with `<img>` when a real photo is available; the placeholder div has `role="img"` and `aria-label` already set
-
-### Mobile nav
-- Phone link `(555) 555-0100` (`href="tel:+15555550100"`) in Navbar footer — should be replaced with `contactData.phoneDisplay` / `contactData.phoneHref` from `src/data/contact.ts`
-
-### Footer
-- Legal links (Privacy Policy, Terms of Use, Cookie Policy) all point to `href="#"` — placeholder targets
 
 ## Real contact data (in `src/data/contact.ts`)
 

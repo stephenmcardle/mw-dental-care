@@ -2,35 +2,43 @@
 
 ## Status
 
-All main pages are built and functional. Most recently completed:
-- Contact section refactored — all data centralised into `src/data/contact.ts`
-- Contact cards redesigned — full-card anchor links for phone/address/email, static hours card
-- Contact card grid changed from 4-column to 2×2 for better readability
-- Map embed moved below CTA on `/contact` page
-- Mobile sticky call bar added to `/contact` page only
-- Real contact data populated in `src/data/contact.ts` (address, phone, email, working hours)
+All main pages are built and functional. All known structural issues resolved. Legal/policy pages added with proper SEO treatment. Sitemap generation automated.
 
 ## What is complete
 
-- HomePage: Hero, Services preview, About preview, Contact info
+- HomePage: Hero, Services preview, About preview, Contact info preview
 - ServicesPage: category card grid with treatment list previews
 - ServiceDetailPage: category view + individual service detail view
 - AboutPage: full redesign with 7 sections using Section wrapper pattern
 - ContactPage: contact cards, CTA, Google Maps embed, mobile sticky call bar
-- Navbar: logo, desktop nav, polished mobile sheet nav
-- Footer: exists but needs work (see Known Issues)
+- Navbar: logo, desktop nav, polished mobile sheet nav — uses real `contactData` phone
+- Footer: React Router `<Link to>` nav, logo image brand mark, dot-separated legal links
+- PrivacyPolicyPage (`/privacy-policy`): noindex, contactData address block
+- TermsOfUsePage (`/terms-of-use`): noindex, contactData address block
+- AccessibilityPage (`/accessibility`): noindex, WCAG 2.1 AA commitment statement
+- Sitemap: auto-generated to `dist/sitemap.xml` via `postbuild` npm hook
+
+## Head management
+
+`react-helmet-async` is installed and `<HelmetProvider>` wraps `<App>` in `src/main.tsx`.
+Use `<Helmet>` in page components for per-route head tags (robots, canonical, etc.).
+Legal pages use `<Helmet><meta name="robots" content="noindex, follow" /></Helmet>`.
+
+## Sitemap
+
+`scripts/generate-sitemap.js` runs after every build via `"postbuild"` in `package.json`.
+- 26 routes indexed. Excludes `/privacy-policy`, `/terms-of-use`, `/accessibility`.
+- Production URL hardcoded: `const PRODUCTION_URL = 'https://mwdentalcare.net'`
+- Override at build time: `VITE_SITE_URL=https://staging.example.com npm run build`
 
 ## Next Tasks
 
-- Update Footer to use React Router `<Link to>` instead of `<a href="#...">` anchor links
-- Update Footer to use logo image instead of `Cross` icon
-- Update Navbar mobile nav phone `(555) 555-0100` to real number from `contactData`
+- About page: replace all placeholder content (bio, credentials, testimonials, community, philosophy, tech cards) when client provides real copy
+- About page: replace initials portrait placeholder with real photo when available
 - Consider adding a booking form to Contact page
-- Consider applying `Section` wrapper pattern to homepage components for consistency
+- Consider applying `Section` wrapper pattern to remaining homepage components for consistency
 
 ## Known Issues
 
-- Footer nav links use `<a href="#services">` etc. — not React Router links, broken navigation
-- Footer brand uses `Cross` lucide icon — should use logo image like Navbar
-- Navbar mobile nav phone is still the old `(555) 555-0100` placeholder — should use `contactData.phoneDisplay`
+- About page content in `src/data/about.ts` is mostly placeholder — must be replaced before launch
 - Contact page has no booking form — info cards + CTA only
