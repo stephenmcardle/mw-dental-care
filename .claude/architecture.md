@@ -22,6 +22,7 @@ src/
   data/                 # Single source of truth for all site content
     services.ts         # ServiceCategory[] + ServiceDetail[] + helper functions
     about.ts            # AboutData object for the about page
+    contact.ts          # ContactData object — address, phone, email, working hours, Maps links
   hooks/
     usePageTitle.ts     # Sets document.title — call in every page component
   pages/
@@ -43,7 +44,7 @@ All routes defined in `App.tsx` inside a single `BrowserRouter`:
 | `/services` | ServicesPage | Category overview grid |
 | `/services/:slug` | ServiceDetailPage | Resolves category slugs first, then service slugs |
 | `/about` | AboutPage | Full about page |
-| `/contact` | ContactPage | Contact info component |
+| `/contact` | ContactPage | Contact cards, CTA, map embed, mobile sticky call bar |
 
 **SPA fallback**: `wrangler.jsonc` sets `not_found_handling: "single-page-application"` — all unknown paths serve `index.html` and React Router handles resolution client-side.
 
@@ -55,6 +56,7 @@ All content text lives in `src/data/` — never hardcoded in components.
 
 - `services.ts` exports `categories`, `services`, and helpers: `getCategoryBySlug`, `getServiceBySlug`, `getServicesForCategory`, `getRelatedServices`
 - `about.ts` exports a single `aboutData` object
+- `contact.ts` exports a single `contactData` object — used by both `Contact.tsx` and `ContactPage.tsx`
 
 Components import from data files and render. Adding or editing content = edit the data file only.
 
