@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/layout/Section'
@@ -25,6 +26,7 @@ const clickableCardBase = cn(
 export default function Contact({ variant = 'preview' }: ContactProps) {
   const isFull = variant === 'full'
   const HeadingTag: 'h1' | 'h2' = isFull ? 'h1' : 'h2'
+  const [isMapLoaded, setIsMapLoaded] = useState(false)
 
   const {
     addressLines,
@@ -192,13 +194,29 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
             </div>
 
             {/* Map embed */}
-            <div className="overflow-hidden rounded-2xl border">
+            <div className="relative overflow-hidden rounded-2xl border h-64 sm:h-80">
+              {/* Loading placeholder — fades out once iframe fires onLoad */}
+              <div
+                className={cn(
+                  'absolute inset-0 flex flex-col items-center justify-center gap-2 bg-muted',
+                  'transition-opacity duration-500 pointer-events-none',
+                  isMapLoaded ? 'opacity-0' : 'opacity-100',
+                )}
+                aria-hidden="true"
+              >
+                <MapPin className="h-6 w-6 text-muted-foreground/40" aria-hidden="true" />
+                <p className="text-xs text-muted-foreground/60">Loading map…</p>
+              </div>
               <iframe
                 src={mapsEmbedSrc}
                 title="Map showing the location of MW Dental Care"
-                className="w-full h-64 sm:h-80 block"
+                className={cn(
+                  'absolute inset-0 w-full h-full block transition-opacity duration-500',
+                  isMapLoaded ? 'opacity-100' : 'opacity-0',
+                )}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                onLoad={() => setIsMapLoaded(true)}
               />
             </div>
           </div>
