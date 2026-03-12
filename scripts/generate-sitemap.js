@@ -64,6 +64,7 @@ const routes = [
   '/services/root-canals',
   '/services/extractions',
   '/services/clear-aligners',
+  '/services/implant-placement',
   '/services/implant-restoration',
   '/services/digital-x-rays',
   '/services/panoramic-imaging',
