@@ -13,6 +13,7 @@ import {
 import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import logo from '@/assets/mw-logo-transparent.png'
+import { contactData } from '@/data/contact'
 
 const links = [
   { label: 'Home', to: '/' },
@@ -133,14 +134,14 @@ export default function Navbar() {
                 Book Appointment
               </Link>
               <a
-                href="tel:+15555550100"
+                href={contactData.phoneHref}
                 className={cn(
                   'block text-center text-sm text-muted-foreground',
                   'hover:text-foreground transition-colors',
                   'rounded-md py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 )}
               >
-                (555) 555-0100
+                {contactData.phoneDisplay}
               </a>
             </SheetFooter>
           </SheetContent>
