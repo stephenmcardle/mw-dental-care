@@ -11,7 +11,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <About />
-      <Contact />
+      <Contact variant="preview" />
     </>
   )
 }
