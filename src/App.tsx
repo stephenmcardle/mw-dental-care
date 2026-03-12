@@ -6,6 +6,9 @@ import ServicesPage from '@/pages/ServicesPage'
 import ServiceDetailPage from '@/pages/ServiceDetailPage'
 import AboutPage from '@/pages/AboutPage'
 import ContactPage from '@/pages/ContactPage'
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage'
+import TermsOfUsePage from '@/pages/TermsOfUsePage'
+import AccessibilityPage from '@/pages/AccessibilityPage'
 
 export default function App() {
   return (
@@ -19,6 +22,9 @@ export default function App() {
             <Route path="/services/:slug" element={<ServiceDetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
           </Routes>
         </main>
         <Footer />

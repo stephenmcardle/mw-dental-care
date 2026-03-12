@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { Separator } from '@/components/ui/separator'
 import logo from '@/assets/mw-logo-transparent.png'
@@ -9,9 +10,9 @@ const navLinks = [
 ]
 
 const legalLinks = [
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Use', href: '#' },
-  { label: 'Cookie Policy', href: '#' },
+  { label: 'Privacy Policy', to: '/privacy-policy' },
+  { label: 'Terms of Use', to: '/terms-of-use' },
+  { label: 'Accessibility', to: '/accessibility' },
 ]
 
 export default function Footer() {
@@ -42,15 +43,18 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} MW Dental Care. All rights reserved.</p>
-          <nav className="flex gap-4">
-            {legalLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
+          <nav className="flex items-center gap-2">
+            {legalLinks.map((link, i) => (
+              <Fragment key={link.label}>
+                {i > 0 && (
+                  <span aria-hidden="true" className="select-none text-muted-foreground/40">
+                    &bull;
+                  </span>
+                )}
+                <Link to={link.to} className="hover:text-foreground transition-colors">
+                  {link.label}
+                </Link>
+              </Fragment>
             ))}
           </nav>
         </div>
