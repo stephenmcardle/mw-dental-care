@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import { Separator } from '@/components/ui/separator'
-import { Cross } from 'lucide-react'
+import logo from '@/assets/mw-logo-transparent.png'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', to: '/services' },
+  { label: 'About', to: '/about' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 const legalLinks = [
@@ -19,21 +20,20 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Brand */}
-          <div className="flex items-center gap-2 font-bold text-lg">
-            <Cross className="h-5 w-5 text-primary" />
-            MW Dental Care
-          </div>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="MW Dental Care" className="h-8 w-auto" />
+          </Link>
 
           {/* Nav links */}
           <nav className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="hover:text-foreground transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
