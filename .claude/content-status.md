@@ -1,0 +1,28 @@
+# Content Status
+
+Quick reference for what is real vs placeholder. See `project-context.md` for full detail.
+
+## Real / confirmed
+
+- Practice name: MW Dental Care
+- Founded: 2005
+- Lead dentist: Dr. Margaret Williams
+- Logo image: `src/assets/mw-logo-transparent.png` (production asset)
+- Service categories and treatment names in `src/data/services.ts`
+
+## Placeholder — must be replaced before launch
+
+| Location | What is placeholder |
+|---|---|
+| `src/components/Contact.tsx` | Address, phone, email, opening hours |
+| `src/components/Navbar.tsx` | Mobile nav phone `(555) 555-0100` |
+| `src/data/about.ts` | Dentist bio, all four credential chips, all three testimonials, community paragraphs, community highlights, philosophy card descriptions, technology card descriptions |
+| `src/pages/AboutPage.tsx` | Portrait placeholder block (initials "MW") — replace with `<img>` |
+| `src/components/Footer.tsx` | Legal link targets (Privacy Policy, Terms, Cookie Policy all point to `#`) |
+
+## Known structural gaps (not yet built)
+
+- No booking form — Contact page is info-only
+- No blog or news section
+- Footer uses anchor `href="#..."` links instead of React Router `<Link to>` — needs updating
+- Footer uses `Cross` lucide icon as brand mark instead of the logo image
