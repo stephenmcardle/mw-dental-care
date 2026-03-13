@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/layout/Section'
+import { SectionHeader } from '@/components/layout/SectionHeader'
 import { contactData } from '@/data/contact'
 import { cn } from '@/lib/utils'
 
@@ -39,6 +40,8 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
     mapsEmbedSrc,
     ctaHeading,
     ctaPrimaryLabel,
+    insurance,
+    payment,
   } = contactData
 
   const cardPad = isFull ? 'p-6' : 'p-5'
@@ -220,6 +223,77 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
               />
             </div>
           </div>
+
+        </Section>
+
+        {/* ── Insurance & Payment ─────────────────────────────────────────── */}
+        <Section variant="default" labelledBy="insurance-heading">
+          <SectionHeader
+            id="insurance-heading"
+            eyebrow="Before Your Visit"
+            title="Insurance & Payment"
+            description="We make it easy to understand your costs before you arrive. Don't see your plan or have a question? Just give us a call."
+            align="center"
+          />
+
+          <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+            {/* Insurance */}
+            <div className={cn(cardBase, 'p-6')}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                Insurance Accepted
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                {insurance.note}
+              </p>
+              <ul role="list" aria-label="Accepted insurance plans" className="flex flex-wrap gap-2">
+                {insurance.carriers.map((carrier) => (
+                  <li
+                    key={carrier}
+                    className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
+                  >
+                    {carrier}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Payment */}
+            <div className={cn(cardBase, 'p-6')}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                Payment Methods
+              </p>
+              <ul role="list" aria-label="Accepted payment methods" className="flex flex-wrap gap-2 mb-5">
+                {payment.methods.map((method) => (
+                  <li
+                    key={method}
+                    className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
+                  >
+                    {method}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {payment.financingNote}
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            Have a question about your first visit?{' '}
+            <Link
+              to="/about#faq"
+              className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+            >
+              See our FAQ
+            </Link>{' '}
+            or call us at{' '}
+            <a
+              href={phoneHref}
+              className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+            >
+              {phoneDisplay}
+            </a>.
+          </p>
 
           {/* Spacer so sticky bar does not overlap the last content on mobile */}
           <div className="h-24 sm:hidden" aria-hidden="true" />

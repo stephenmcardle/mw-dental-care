@@ -15,6 +15,14 @@ export type ContactData = {
   mapsEmbedSrc: string
   ctaHeading: string
   ctaPrimaryLabel: string
+  insurance: {
+    note: string
+    carriers: string[]
+  }
+  payment: {
+    methods: string[]
+    financingNote: string
+  }
 }
 
 export const contactData: ContactData = {
@@ -33,4 +41,23 @@ export const contactData: ContactData = {
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.056209195576!2d-75.23974882397302!3d40.73878867138957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c46fa59e427bf1%3A0x37c5dfba5890521f!2sMW%20Dental%20Care!5e0!3m2!1sen!2sus!4v1773283457835!5m2!1sen!2sus',
   ctaHeading: 'Ready to Book?',
   ctaPrimaryLabel: 'Call Now',
+  insurance: {
+    note: "We work with most major dental insurance plans. Don't see yours listed? Call us — we're happy to verify your coverage before your visit.",
+    carriers: [
+      'Delta Dental',
+      'MetLife',
+      'Cigna',
+      'Aetna',
+      'Guardian',
+      'United Concordia',
+      'Humana',
+      'BlueCross BlueShield',
+      'Principal',
+      'Ameritas',
+    ],
+  },
+  payment: {
+    methods: ['Cash', 'Check', 'Visa', 'Mastercard', 'American Express', 'Discover', 'CareCredit'],
+    financingNote: 'We offer CareCredit financing for qualifying treatments. Ask our front desk for details.',
+  },
 }
