@@ -20,7 +20,7 @@ export default function Hero() {
           {/* Left: text content */}
           <div>
             <Badge variant="secondary" className="mb-4">
-              Trusted Dental Care Since 2005
+              Serving Easton &amp; the Lehigh Valley Since 2005
             </Badge>
 
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">

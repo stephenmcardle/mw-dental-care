@@ -12,6 +12,6 @@ export function usePageTitle(pageTitle?: string) {
   useEffect(() => {
     document.title = pageTitle
       ? `${pageTitle} | ${SITE_NAME}`
-      : `${SITE_NAME} | Professional Dental Services`
+      : `${SITE_NAME} | Family & Cosmetic Dentistry in Easton, PA`
   }, [pageTitle])
 }
