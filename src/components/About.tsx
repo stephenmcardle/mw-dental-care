@@ -3,12 +3,12 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { Section } from '@/components/layout/Section'
 import { aboutData } from '@/data/about'
 
 export default function About() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-20">
-      <div className="container mx-auto px-4">
+    <Section variant="default" id="about" labelledBy="about-heading">
         <div className="grid gap-12 md:grid-cols-2 items-center">
           {/* Left: intro text + CTA */}
           <div>
@@ -43,7 +43,6 @@ export default function About() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   )
 }
