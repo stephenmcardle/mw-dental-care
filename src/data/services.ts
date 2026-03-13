@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Anchor, Scan, ShieldCheck, Smile, Sparkles, Wrench } from 'lucide-react'
+import { Gem, Pin, Scan, ShieldCheck, Smile, Sparkles } from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -68,7 +68,7 @@ export const categories: ServiceCategory[] = [
     shortDescription:
       'Repair damaged or missing teeth with crowns, bridges, dentures, and other restorative solutions.',
     href: '/services/restorative-dentistry',
-    icon: Wrench,
+    icon: Gem,
     iconClass: 'text-orange-600',
     serviceSlugs: ['crowns', 'bridges', 'dentures', 'fillings', 'root-canals', 'extractions'],
   },
@@ -92,7 +92,7 @@ export const categories: ServiceCategory[] = [
     shortDescription:
       'Replace missing teeth with permanent, natural-looking dental implants designed to restore function and confidence.',
     href: '/services/dental-implants',
-    icon: Anchor,
+    icon: Pin,
     iconClass: 'text-teal-600',
     // Note: "implant-placement" is used instead of "dental-implants" to avoid
     // a slug collision with this category. The route /services/dental-implants
