@@ -294,7 +294,29 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      {/* ── 7. CTA ────────────────────────────────────────────── */}
+      {/* ── 7. FAQ ────────────────────────────────────────────── */}
+      <Section variant="default" id="faq" labelledBy="faq-heading">
+        <SectionHeader
+          id="faq-heading"
+          eyebrow="Common Questions"
+          title="Frequently Asked Questions"
+          align="center"
+          className="max-w-2xl"
+        />
+
+        <dl className="max-w-3xl mx-auto divide-y border-t border-b">
+          {aboutData.faqs.map((faq) => (
+            <div key={faq.question} className="py-6">
+              <dt className="text-base font-semibold">{faq.question}</dt>
+              <dd className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {faq.answer}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      {/* ── 8. CTA ────────────────────────────────────────────── */}
       <Section variant="dark" labelledBy="cta-heading" containerClassName="text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-fg/60 mb-4">
           Get Started Today

@@ -26,6 +26,11 @@ export type TechnologyCard = {
   description: string
 }
 
+export type AboutFaq = {
+  question: string
+  answer: string
+}
+
 export type AboutData = {
   introTitle: string
   introText: string[]
@@ -44,6 +49,7 @@ export type AboutData = {
   community: string[]
   communityHighlights: string[]
   testimonials: AboutTestimonial[]
+  faqs: AboutFaq[]
 }
 
 export const aboutData: AboutData = {
@@ -146,6 +152,39 @@ export const aboutData: AboutData = {
         'Genuinely the best dental experience I have had. The technology is impressive and the staff is incredibly warm.',
       author: 'Priya K.',
       role: 'Cosmetic Dentistry Patient',
+    },
+  ],
+
+  faqs: [
+    {
+      question: 'Are you accepting new patients?',
+      answer:
+        'Yes — we warmly welcome new patients of all ages. Simply call our front desk or send us an email to schedule your first visit. Same-day emergency appointments are also available.',
+    },
+    {
+      question: 'What should I bring to my first appointment?',
+      answer:
+        'Please bring a valid photo ID, your insurance card, and a list of any current medications or supplements. Arriving 10 minutes early gives us time to complete your intake paperwork.',
+    },
+    {
+      question: 'Do you treat children?',
+      answer:
+        'Absolutely. We provide family dentistry for patients of all ages, from toddlers to seniors. We take extra care to ensure younger patients feel comfortable and at ease from the very first visit.',
+    },
+    {
+      question: 'What if I have dental anxiety?',
+      answer:
+        'You are not alone — dental anxiety is very common, and our team is trained to work at your pace. We explain every step before it happens and never rush you. Please mention any concerns when you book and we will plan your visit accordingly.',
+    },
+    {
+      question: 'How often should I come in for a cleaning?',
+      answer:
+        'Most patients benefit from a professional cleaning and check-up every six months. Depending on your oral health, we may recommend more frequent visits. We will discuss the right schedule for you at your first appointment.',
+    },
+    {
+      question: 'What should I do in a dental emergency?',
+      answer:
+        'Call our office as soon as possible. We reserve time each day for same-day emergency appointments. If you are experiencing severe pain, significant swelling, or a knocked-out tooth, please call immediately — do not wait.',
     },
   ],
 }
