@@ -59,6 +59,8 @@ export default function Hero() {
             <img
               src={heroImage}
               alt="A dentist reviews treatment options with a patient using a digital screen"
+              width={1536}
+              height={1024}
               className="w-full rounded-2xl shadow-md"
             />
           </div>
