@@ -51,7 +51,7 @@ See `CLAUDE.md § Brand palette & colour rules` for the full token reference. Ke
 - About page: replace all placeholder content (bio, credentials, testimonials, community, philosophy, tech cards) when client provides real copy
 - About page: replace initials portrait placeholder with real photo when available (placeholder now uses peach gradient)
 - Consider adding a booking form to Contact page
-- Consider applying `Section` wrapper pattern to remaining homepage components for consistency
+- ~~Consider applying `Section` wrapper pattern to remaining homepage components for consistency~~ — done: `Services` and `About` converted; `Hero` left as-is (bespoke gradient + overflow-hidden)
 - Verify LocalBusiness JSON-LD schema with Google's Rich Results Test after first deploy
 
 ## Known Issues
