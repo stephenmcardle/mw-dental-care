@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
-import logo from '@/assets/mw-logo-transparent.png'
+import logo from '@/assets/mw-logo-trans.png'
 import { contactData } from '@/data/contact'
 
 const links = [
@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="MW Dental Care" className="h-9 w-auto" />
+          <img src={logo} alt="MW Dental Care" className="h-9.5 md:h-10.25 w-auto" />
         </Link>
 
         {/* Desktop nav — unchanged */}

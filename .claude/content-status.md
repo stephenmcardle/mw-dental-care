@@ -7,7 +7,7 @@ Quick reference for what is real vs placeholder. See `project-context.md` for fu
 - Practice name: MW Dental Care
 - Founded: 2005
 - Lead dentist: Dr. Monica Wisniewski
-- Logo image: `src/assets/mw-logo-transparent.png` (production asset)
+- Logo image: `src/assets/mw-logo-trans.png` (production asset)
 - Service categories and treatment names in `src/data/services.ts`
 - Contact details in `src/data/contact.ts`: address, phone, email, working hours, Maps link + embed
 - Production domain: `mwdentalcare.net` (no `www`)

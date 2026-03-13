@@ -28,7 +28,7 @@ npm run preview    # Preview production build
 
 ```
 src/
-  assets/               # Static assets (logo: mw-logo-transparent.png)
+  assets/               # Static assets (logo: mw-logo-trans.png)
   components/
     layout/             # Section.tsx, SectionHeader.tsx — page-level wrappers
     ui/                 # Shadcn components — do not edit manually

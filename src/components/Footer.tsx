@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { Separator } from '@/components/ui/separator'
-import logo from '@/assets/mw-logo-transparent.png'
+import logo from '@/assets/mw-logo-trans.png'
 
 const navLinks = [
   { label: 'Services', to: '/services' },
@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Brand */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="MW Dental Care" className="h-8 w-auto" />
+            <img src={logo} alt="MW Dental Care" className="h-8.5 md:h-9.25 w-auto" />
           </Link>
 
           {/* Nav links */}
