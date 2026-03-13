@@ -45,6 +45,11 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
+        <meta name="description" content="Family and cosmetic dentistry in Easton, PA. Preventive, restorative, and cosmetic dental care for the whole family. Accepting new patients — same-day emergency appointments available." />
+        <meta property="og:title" content="MW Dental Care | Family &amp; Cosmetic Dentistry in Easton, PA" />
+        <meta property="og:description" content="Family and cosmetic dentistry in Easton, PA. Preventive, restorative, and cosmetic dental care for the whole family. Accepting new patients — same-day emergency appointments available." />
+        <meta property="og:url" content="https://mwdentalcare.net/" />
+        <link rel="canonical" href="https://mwdentalcare.net/" />
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
         </script>

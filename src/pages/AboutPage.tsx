@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -25,6 +26,14 @@ export default function AboutPage() {
   usePageTitle('About Us')
   return (
     <div>
+      <Helmet>
+        <meta name="description" content="Get to know MW Dental Care — a patient-first dental practice in Easton, PA serving the Lehigh Valley since 2005. Modern technology, compassionate care." />
+        <meta property="og:title" content="About Us | MW Dental Care" />
+        <meta property="og:description" content="Get to know MW Dental Care — a patient-first dental practice in Easton, PA serving the Lehigh Valley since 2005. Modern technology, compassionate care." />
+        <meta property="og:url" content="https://mwdentalcare.net/about" />
+        <link rel="canonical" href="https://mwdentalcare.net/about" />
+      </Helmet>
+
       {/* ── 1. INTRO / HERO ────────────────────────────────────── */}
       <Section variant="accent" labelledBy="about-intro-heading">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">

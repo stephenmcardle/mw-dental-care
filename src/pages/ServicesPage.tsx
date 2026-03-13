@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { categories, getServicesForCategory } from '@/data/services'
@@ -6,6 +7,14 @@ import { usePageTitle } from '@/hooks/usePageTitle'
 export default function ServicesPage() {
   usePageTitle('Our Services')
   return (
+    <>
+    <Helmet>
+      <meta name="description" content="Full-service dental care in Easton, PA. Preventive, restorative, cosmetic, and emergency dentistry for patients of all ages at MW Dental Care." />
+      <meta property="og:title" content="Our Services | MW Dental Care" />
+      <meta property="og:description" content="Full-service dental care in Easton, PA. Preventive, restorative, cosmetic, and emergency dentistry for patients of all ages." />
+      <meta property="og:url" content="https://mwdentalcare.net/services" />
+      <link rel="canonical" href="https://mwdentalcare.net/services" />
+    </Helmet>
     <div className="py-20">
       <div className="container mx-auto px-4">
         <header className="text-center mb-12">
@@ -75,5 +84,6 @@ export default function ServicesPage() {
         </ul>
       </div>
     </div>
+    </>
   )
 }

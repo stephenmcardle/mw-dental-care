@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, CheckCircle, ChevronRight } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button'
@@ -58,6 +59,13 @@ function CategoryView({ category }: { category: ServiceCategory }) {
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <Helmet>
+        <meta name="description" content={`${category.description} — MW Dental Care, Easton PA.`} />
+        <meta property="og:title" content={`${category.title} | MW Dental Care`} />
+        <meta property="og:description" content={`${category.description} — MW Dental Care, Easton PA.`} />
+        <meta property="og:url" content={`https://mwdentalcare.net/services/${category.slug}`} />
+        <link rel="canonical" href={`https://mwdentalcare.net/services/${category.slug}`} />
+      </Helmet>
       <Breadcrumb
         crumbs={[
           { label: 'All Services', to: '/services' },
@@ -114,6 +122,13 @@ function ServiceView({ service }: { service: ServiceDetail }) {
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-3xl">
+      <Helmet>
+        <meta name="description" content={`${service.shortDescription} — MW Dental Care, Easton PA.`} />
+        <meta property="og:title" content={`${service.title} | MW Dental Care`} />
+        <meta property="og:description" content={`${service.shortDescription} — MW Dental Care, Easton PA.`} />
+        <meta property="og:url" content={`https://mwdentalcare.net/services/${service.slug}`} />
+        <link rel="canonical" href={`https://mwdentalcare.net/services/${service.slug}`} />
+      </Helmet>
       <Breadcrumb
         crumbs={[
           { label: 'All Services', to: '/services' },
