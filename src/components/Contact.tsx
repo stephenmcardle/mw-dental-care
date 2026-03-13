@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/layout/Section'
-import { SectionHeader } from '@/components/layout/SectionHeader'
 import { contactData } from '@/data/contact'
 import { cn } from '@/lib/utils'
 
@@ -157,143 +156,137 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
         <Section variant="muted" id="contact" labelledBy="contact-heading">
           {sectionIntro}
 
-          {/* Stage wrapper — unifies cards, CTA, and map */}
-          <div className="max-w-3xl mx-auto rounded-3xl border bg-card shadow-sm p-8 sm:p-10 flex flex-col gap-8">
-            {cards}
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
 
-            {/* CTA block */}
-            <div className="rounded-2xl bg-brand-dark text-brand-dark-fg text-center py-10 px-6">
-              <h2 className="text-2xl font-bold">{ctaHeading}</h2>
-              <p className="mt-3 text-brand-dark-fg/80 leading-relaxed">
-                Call us at{' '}
+            {/* ── Left column: contact info + insurance + payment ── */}
+            <div className="flex flex-col gap-6">
+              {cards}
+
+              {/* Insurance + Payment — reference info, no card treatment */}
+              <div className="border-t pt-6 flex flex-col gap-6">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                    Insurance Accepted
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {insurance.note}
+                  </p>
+                  <ul role="list" aria-label="Accepted insurance plans" className="flex flex-wrap gap-2">
+                    {insurance.carriers.map((carrier) => (
+                      <li
+                        key={carrier}
+                        className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
+                      >
+                        {carrier}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                    Payment Methods
+                  </p>
+                  <ul role="list" aria-label="Accepted payment methods" className="flex flex-wrap gap-2 mb-4">
+                    {payment.methods.map((method) => (
+                      <li
+                        key={method}
+                        className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
+                      >
+                        {method}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {payment.financingNote}
+                  </p>
+                </div>
+              </div>
+
+              {/* FAQ pointer */}
+              <p className="text-sm text-muted-foreground">
+                Have a question about your first visit?{' '}
+                <Link
+                  to="/about#faq"
+                  className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
+                >
+                  See our FAQ
+                </Link>{' '}
+                or call us at{' '}
                 <a
                   href={phoneHref}
-                  className="font-semibold text-brand-dark-fg underline underline-offset-2 hover:text-brand-dark-fg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
+                  className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
                 >
                   {phoneDisplay}
-                </a>{' '}
-                or email us and we&apos;ll confirm your appointment as soon as
-                possible.
+                </a>.
               </p>
-              <p className="mt-1.5 text-sm text-brand-dark-fg/60">
-                Most appointment requests are confirmed within one working day.
-              </p>
-              <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href={phoneHref}
-                  className="inline-block rounded-md bg-background text-foreground font-semibold px-6 py-3 hover:bg-background/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            </div>
+
+            {/* ── Right column: CTA + map (sticky on desktop) ── */}
+            <div className="flex flex-col gap-6 lg:sticky lg:top-24">
+
+              {/* CTA block */}
+              <div className="rounded-2xl bg-brand-dark text-brand-dark-fg text-center py-10 px-6">
+                <h2 className="text-2xl font-bold">{ctaHeading}</h2>
+                <p className="mt-3 text-brand-dark-fg/80 leading-relaxed">
+                  Call us at{' '}
+                  <a
+                    href={phoneHref}
+                    className="font-semibold text-brand-dark-fg underline underline-offset-2 hover:text-brand-dark-fg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
+                  >
+                    {phoneDisplay}
+                  </a>{' '}
+                  or email us and we&apos;ll confirm your appointment as soon as
+                  possible.
+                </p>
+                <p className="mt-1.5 text-sm text-brand-dark-fg/60">
+                  Most appointment requests are confirmed within one working day.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={phoneHref}
+                    className="inline-block rounded-md bg-background text-foreground font-semibold px-6 py-3 hover:bg-background/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                  >
+                    {ctaPrimaryLabel}
+                  </a>
+                  <a
+                    href={mapsHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-brand-dark-fg/80 underline underline-offset-2 hover:text-brand-dark-fg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
+                  >
+                    Get directions &rarr;
+                  </a>
+                </div>
+              </div>
+
+              {/* Map embed */}
+              <div className="relative overflow-hidden rounded-2xl border h-64 sm:h-80">
+                <div
+                  className={cn(
+                    'absolute inset-0 flex flex-col items-center justify-center gap-2 bg-muted',
+                    'transition-opacity duration-500 pointer-events-none',
+                    isMapLoaded ? 'opacity-0' : 'opacity-100',
+                  )}
+                  aria-hidden="true"
                 >
-                  {ctaPrimaryLabel}
-                </a>
-                <a
-                  href={mapsHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium text-brand-dark-fg/80 underline underline-offset-2 hover:text-brand-dark-fg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark-fg focus-visible:rounded-sm"
-                >
-                  Get directions &rarr;
-                </a>
+                  <MapPin className="h-6 w-6 text-muted-foreground/40" aria-hidden="true" />
+                  <p className="text-xs text-muted-foreground/60">Loading map…</p>
+                </div>
+                <iframe
+                  src={mapsEmbedSrc}
+                  title="Map showing the location of MW Dental Care"
+                  className={cn(
+                    'absolute inset-0 w-full h-full block transition-opacity duration-500',
+                    isMapLoaded ? 'opacity-100' : 'opacity-0',
+                  )}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  onLoad={() => setIsMapLoaded(true)}
+                />
               </div>
             </div>
-
-            {/* Map embed */}
-            <div className="relative overflow-hidden rounded-2xl border h-64 sm:h-80">
-              {/* Loading placeholder — fades out once iframe fires onLoad */}
-              <div
-                className={cn(
-                  'absolute inset-0 flex flex-col items-center justify-center gap-2 bg-muted',
-                  'transition-opacity duration-500 pointer-events-none',
-                  isMapLoaded ? 'opacity-0' : 'opacity-100',
-                )}
-                aria-hidden="true"
-              >
-                <MapPin className="h-6 w-6 text-muted-foreground/40" aria-hidden="true" />
-                <p className="text-xs text-muted-foreground/60">Loading map…</p>
-              </div>
-              <iframe
-                src={mapsEmbedSrc}
-                title="Map showing the location of MW Dental Care"
-                className={cn(
-                  'absolute inset-0 w-full h-full block transition-opacity duration-500',
-                  isMapLoaded ? 'opacity-100' : 'opacity-0',
-                )}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                onLoad={() => setIsMapLoaded(true)}
-              />
-            </div>
           </div>
-
-        </Section>
-
-        {/* ── Insurance & Payment ─────────────────────────────────────────── */}
-        <Section variant="default" labelledBy="insurance-heading">
-          <SectionHeader
-            id="insurance-heading"
-            eyebrow="Before Your Visit"
-            title="Insurance & Payment"
-            description="We make it easy to understand your costs before you arrive. Don't see your plan or have a question? Just give us a call."
-            align="center"
-          />
-
-          <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-            {/* Insurance */}
-            <div className={cn(cardBase, 'p-6')}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-                Insurance Accepted
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                {insurance.note}
-              </p>
-              <ul role="list" aria-label="Accepted insurance plans" className="flex flex-wrap gap-2">
-                {insurance.carriers.map((carrier) => (
-                  <li
-                    key={carrier}
-                    className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
-                  >
-                    {carrier}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Payment */}
-            <div className={cn(cardBase, 'p-6')}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-                Payment Methods
-              </p>
-              <ul role="list" aria-label="Accepted payment methods" className="flex flex-wrap gap-2 mb-5">
-                {payment.methods.map((method) => (
-                  <li
-                    key={method}
-                    className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground ring-1 ring-inset ring-foreground/10"
-                  >
-                    {method}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {payment.financingNote}
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-10 text-center text-sm text-muted-foreground">
-            Have a question about your first visit?{' '}
-            <Link
-              to="/about#faq"
-              className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
-            >
-              See our FAQ
-            </Link>{' '}
-            or call us at{' '}
-            <a
-              href={phoneHref}
-              className="font-medium text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm"
-            >
-              {phoneDisplay}
-            </a>.
-          </p>
 
           {/* Spacer so sticky bar does not overlap the last content on mobile */}
           <div className="h-24 sm:hidden" aria-hidden="true" />
