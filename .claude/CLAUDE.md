@@ -28,7 +28,7 @@ npm run preview    # Preview production build
 
 ```
 src/
-  assets/               # Static assets (logo: mw-logo-trans.png)
+  assets/               # Static assets (logo: mw-logo-trans.png, hero: hero-image.png)
   components/
     layout/             # Section.tsx, SectionHeader.tsx — page-level wrappers
     ui/                 # Shadcn components — do not edit manually
@@ -117,6 +117,14 @@ import { Helmet } from 'react-helmet-async'
 `<HelmetProvider>` is already in `src/main.tsx` — do not add it again.
 Legal pages (`/privacy-policy`, `/terms-of-use`, `/accessibility`) all carry `noindex, follow`.
 
+**LocalBusiness JSON-LD schema** is injected in `HomePage.tsx` via:
+```tsx
+<Helmet>
+  <script type="application/ld+json">{JSON.stringify(schemaObject)}</script>
+</Helmet>
+```
+Use `@type: "Dentist"` for dental practices. Place schema in the page component for the route it describes (e.g. homepage), not in `App.tsx`.
+
 ### Icons
 - `aria-hidden="true"` on all decorative icons
 - Store icon references (not JSX) in data files: `icon: LucideIcon`
@@ -176,6 +184,6 @@ All tokens defined in `src/index.css` (`:root` + `@theme inline`).
 - Do **not** use `text-primary-foreground` in dark sections — it now resolves to dark navy (invisible on dark bg).
 - `hover:text-primary` links on light backgrounds fail contrast. Use `hover:text-foreground` or `hover:text-foreground/80`.
 
-## Known Issues (as of 2026-03-12)
+## Known Issues (as of 2026-03-13)
 
 - About page content in `src/data/about.ts` is mostly placeholder — do not treat as final

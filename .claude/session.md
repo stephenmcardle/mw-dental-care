@@ -6,7 +6,7 @@ All main pages are built and functional. All known structural issues resolved. L
 
 ## What is complete
 
-- HomePage: Hero, Services preview, About preview, Contact info preview
+- HomePage: Hero (two-column with illustration), Services preview, About preview, Contact info preview; LocalBusiness JSON-LD schema injected via `<Helmet>`
 - ServicesPage: category card grid with treatment list previews
 - ServiceDetailPage: category view + individual service detail view
 - AboutPage: full redesign with 7 sections using Section wrapper pattern
@@ -25,6 +25,10 @@ All main pages are built and functional. All known structural issues resolved. L
 `react-helmet-async` is installed and `<HelmetProvider>` wraps `<App>` in `src/main.tsx`.
 Use `<Helmet>` in page components for per-route head tags (robots, canonical, etc.).
 Legal pages use `<Helmet><meta name="robots" content="noindex, follow" /></Helmet>`.
+
+### LocalBusiness JSON-LD schema
+
+Injected in `HomePage.tsx` via `<Helmet><script type="application/ld+json">`. Uses `@type: "Dentist"` (Schema.org subtype of LocalBusiness). Data sourced from `contactData` where possible; address fields hardcoded as structured data (display format in `contactData.addressLines` is not machine-parseable). Includes `areaServed` for both Easton and Lehigh Valley. Verify post-deploy with Google's Rich Results Test.
 
 ## Sitemap
 
@@ -48,6 +52,7 @@ See `CLAUDE.md § Brand palette & colour rules` for the full token reference. Ke
 - About page: replace initials portrait placeholder with real photo when available (placeholder now uses peach gradient)
 - Consider adding a booking form to Contact page
 - Consider applying `Section` wrapper pattern to remaining homepage components for consistency
+- Verify LocalBusiness JSON-LD schema with Google's Rich Results Test after first deploy
 
 ## Known Issues
 
