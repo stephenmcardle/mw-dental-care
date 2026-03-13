@@ -13,8 +13,19 @@ import AccessibilityPage from '@/pages/AccessibilityPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (hash) {
+      // SPA navigation doesn't trigger native hash scrolling — handle it manually
+      // after React has committed the new route's DOM
+      const id = hash.slice(1)
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 0)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, hash])
   return null
 }
 
