@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Badge } from '@/components/ui/badge'
 import { Section } from '@/components/layout/Section'
 import { contactData } from '@/data/contact'
 import { cn } from '@/lib/utils'
@@ -133,9 +134,7 @@ export default function Contact({ variant = 'preview' }: ContactProps) {
 
   const sectionIntro = (
     <div className="mb-10 text-center">
-      <span className="inline-flex items-center rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground mb-4">
-        Get in Touch
-      </span>
+      <Badge variant="outline" className="mb-4">Get in Touch</Badge>
       <HeadingTag
         id="contact-heading"
         className="text-3xl font-bold tracking-tight sm:text-4xl"
