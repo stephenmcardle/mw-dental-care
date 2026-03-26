@@ -55,8 +55,8 @@ export default function HomePage() {
         </script>
       </Helmet>
       <Hero />
-      <Services />
       <About />
+      <Services variant="preview" />
       <Contact variant="preview" />
     </>
   )
