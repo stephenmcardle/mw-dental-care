@@ -1,4 +1,3 @@
-import { useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { Section } from '@/components/layout/Section'
@@ -6,52 +5,6 @@ import { categories, getServicesForCategory } from '@/data/services'
 import { buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-
-/** Renders category names separated by bullets, suppressing bullets at line breaks. */
-function ServiceCategoryList() {
-  const ref = useRef<HTMLParagraphElement>(null)
-  const [lineFirstSlugs, setLineFirstSlugs] = useState<Set<string>>(new Set())
-
-  useLayoutEffect(() => {
-    const container = ref.current
-    if (!container) return
-
-    function update() {
-      const el = ref.current
-      if (!el) return
-      const children = Array.from(el.children) as HTMLElement[]
-      const firstOnLine = new Set<string>()
-      let prevTop: number | null = null
-      for (const child of children) {
-        const top = Math.round(child.getBoundingClientRect().top)
-        if (top !== prevTop) {
-          const slug = child.dataset.slug
-          if (slug) firstOnLine.add(slug)
-          prevTop = top
-        }
-      }
-      setLineFirstSlugs(firstOnLine)
-    }
-
-    update()
-    const ro = new ResizeObserver(update)
-    ro.observe(container)
-    return () => ro.disconnect()
-  }, [])
-
-  return (
-    <p ref={ref} className="mt-3 text-sm text-muted-foreground/70 flex flex-wrap justify-center gap-y-1">
-      {categories.map((c, i) => (
-        <span key={c.slug} data-slug={c.slug} className="whitespace-nowrap">
-          {i > 0 && !lineFirstSlugs.has(c.slug) && (
-            <span className="mx-1.5" aria-hidden="true">&bull;</span>
-          )}
-          {c.title}
-        </span>
-      ))}
-    </p>
-  )
-}
 
 type ServicesVariant = 'preview' | 'full'
 
@@ -135,7 +88,7 @@ export default function Services({ variant = 'preview' }: ServicesProps) {
     )
   }
 
-  // preview variant — text-only, no cards
+  // preview variant — centered intro with floating clickable service tags
   return (
     <Section variant="default" id="services" labelledBy="services-heading">
       <div className="max-w-2xl mx-auto text-center">
@@ -150,8 +103,23 @@ export default function Services({ variant = 'preview' }: ServicesProps) {
           From preventive care to advanced smile restoration, we provide comprehensive
           dental services for patients of all ages.
         </p>
-        <ServiceCategoryList />
-        <div className="mt-8">
+        <ul
+          role="list"
+          aria-label="Service categories"
+          className="mt-10 flex flex-wrap justify-center gap-2"
+        >
+          {categories.map((category) => (
+            <li key={category.slug}>
+              <Link
+                to={category.href}
+                className="inline-block rounded-full border border-border/60 bg-card px-4 py-2 text-sm font-normal text-foreground transition-colors hover:bg-primary/10 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                {category.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-5">
           <Link to="/services" className={cn(buttonVariants({ size: 'lg' }))}>
             View All Services
           </Link>
