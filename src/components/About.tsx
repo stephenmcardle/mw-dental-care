@@ -8,7 +8,7 @@ import { aboutData } from '@/data/about'
 
 export default function About() {
   return (
-    <Section variant="default" id="about" labelledBy="about-heading">
+    <Section variant="muted" id="about" labelledBy="about-heading">
         <div className="grid gap-12 md:grid-cols-2 items-center">
           {/* Left: intro text + CTA */}
           <div>
